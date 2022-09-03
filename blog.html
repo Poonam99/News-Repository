@@ -12,7 +12,33 @@
 
 <body>
     <header>
+        <section>
+            <div class="card  bg-base-100 my-5 shadow-xl border-round m-7">
+                <div class="card-body">
+                    <h2 class="card-title">Differences between var, let, and const.</h2>
+                    <p>Var:
+                        The scope of a var variable is functional scope.
+                        It can be updated and re-declared into the scope.
+                        It can be declared without initialization.
+                        It can be accessed without initialization as its default value is “undefined”.
+                    </p>
+                    <p>
+                        Let:
+                        The scope of a let variable is block scope.
+                        It can be updated but cannot be re-declared into the scope.
+                        It can be declared without initialization.
+                        It cannot be accessed without initialization otherwise it will give ‘referenceError’.
 
+                    </p>
+                    <p> Const:
+                        The scope of a const variable is block scope.
+                        It cannot be updated or re-declared into the scope.
+                        It cannot be declared without initialization.
+                        It cannot be accessed without initialization, as it cannot be declared without initialization.
+                    </p>
+                </div>
+            </div>
+        </section>
 
     </header>
 </body>
