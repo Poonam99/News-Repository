@@ -1,25 +1,4 @@
-// const newsCategories = async () => {
-//     const url = 'https://openapi.programming-hero.com/api/news/categories';
-//     const res = await fetch(url);
-//     const data = await res.json();
 
-//     //return data;
-//     displayNewsCategories(data.data.news_category);
-// }
-
-// const displayNewsCategories = (data) => {
-//     const newsCategory = document.getElementById('news-category');
-
-//     data.forEach(category => {
-//         //console.log(category);
-//         const { category_name } = category;
-//         const newsDiv = document.createElement('div');
-//         newsDiv.classList.add('col');
-//         newsDiv.innerHTML = `
-//         <button class="block p-3" href="#" onclick="loadNewsData('${category.category_id}')" >${category_name}</button>`;
-//         newsCategory.appendChild(newsDiv);
-//     });
-// }
 const loadMenuData = async () => {
     const response = await fetch('https://openapi.programming-hero.com/api/news/categories');
     const data = await response.json();
@@ -36,12 +15,12 @@ setFullMenu = async () => {
         if (menuArray.indexOf(section.category_name) === -1) {
             menuArray.push(section.category_name);
             const li = document.createElement('li');
-            li.innerHTML = `<button onclick="loadNewsData('${section.category_id}')" id="">${section.category_name}</button>`;
+            li.innerHTML = `<button onclick="loadNewsData('${section.category_id}')" id="">${section.category_name};toggleSpinner(${true})" id="">${section.category_name}</button>`;
             menu.appendChild(li);
         }
     }
 }
-loadMenuData()
+// loadMenuData()
 setFullMenu()
 
 const loadNewsData = id => {
@@ -87,7 +66,7 @@ const showNewsData = newses => {
             </div>`
         viewData.appendChild(createDiv)
     }
-
+    toggleSpinner(false);
 }
 
 viewnewsDetails = async (id) => {
@@ -111,3 +90,27 @@ viewnewsDetails = async (id) => {
     <p class="py-4">${details}</p>
     `
 }
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('hidden');
+    }
+    else {
+        loaderSection.classList.add('hidden')
+    }
+}
+
+const countNews = (id, elem) => {
+    const showContainer = document.getElementById('countNews');
+    showContainer.innerHTML = ``;
+    const createDiv = document.createElement('div');
+    createDiv.innerHTML = `
+    <h3 class="text-center">${id} items found in Catagory <span class="font-bold">${elem}</span></h3>
+    `
+    showContainer.appendChild(createDiv)
+}
+
+
+
+// showNewsData()
+// setFullMenu()
